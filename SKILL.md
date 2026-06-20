@@ -69,6 +69,13 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/product_prices.py` | POST | `/v5/product/info/prices` | Цены, % комиссии FBO/FBS, прайс-индекс (GREEN/YELLOW/RED). Cursor-пагинация |
 | `scripts/product_quota.py` | POST | `/v4/product/info/limit` | Лимиты ассортимента: общий лимит SKU, суточные квоты на создание/обновление |
 
+### Рейтинг продавца (`references/sellerrating.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/rating_summary.py` | POST | `/v1/rating/summary` | Текущие рейтинги по всем показателям: цены, доставка, отмены, ответы в чате |
+| `scripts/rating_history.py` | POST | `/v1/rating/history` | История рейтингов за период. `--from`, `--to` обязательны. `--ratings` — список кодов (по умолчанию все) |
+
 ### Отзывы (`references/reviews.md`)
 
 | Script | Method | Endpoint | Description |
