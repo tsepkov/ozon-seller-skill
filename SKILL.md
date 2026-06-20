@@ -34,7 +34,7 @@ pip install -r requirements.txt
 Each script is a standalone CLI tool. Pass arguments as flags; run with `--help` for details.
 
 ```bash
-python ${HERMES_SKILL_DIR}/scripts/<method>.py [options]
+~/.venv/bin/python ${HERMES_SKILL_DIR}/scripts/<method>.py [options]
 ```
 
 Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
