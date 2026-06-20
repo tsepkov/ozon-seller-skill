@@ -69,6 +69,15 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/product_prices.py` | POST | `/v5/product/info/prices` | Цены, % комиссии FBO/FBS, прайс-индекс (GREEN/YELLOW/RED). Cursor-пагинация |
 | `scripts/product_quota.py` | POST | `/v4/product/info/limit` | Лимиты ассортимента: общий лимит SKU, суточные квоты на создание/обновление |
 
+### Отзывы (`references/reviews.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/review_count.py` | POST | `/v2/review/count` | Количество отзывов по статусам (new / viewed / processed / total) |
+| `scripts/review_list.py` | POST | `/v2/review/list` | Список отзывов. Фильтры: `--sku`, `--status`, `--order-status`, `--from`, `--to`. Cursor-пагинация |
+| `scripts/review_info.py` | POST | `/v2/review/info` | Детальная информация по отзыву с фото и видео. `--id` обязателен |
+| `scripts/review_change_status.py` | POST | `/v2/review/change-status` | Изменить статус отзывов (до 100 за раз). `--status`, `--id` |
+
 ## Rate limits
 
 Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
