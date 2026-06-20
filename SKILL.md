@@ -83,9 +83,14 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/review_info.py` | POST | `/v2/review/info` | Детальная информация по отзыву с фото и видео. `--id` обязателен |
 | `scripts/review_change_status.py` | POST | `/v2/review/change-status` | Изменить статус отзывов (до 100 за раз). `--status`, `--id` |
 
-## Rate limits
+### Rate limits
 
-Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
+Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts add no further throttling.
+
+**CRITICAL PITFALL: Turnover Analytics (`analytics_stocks_turnover.py`)**
+This endpoint has a severe limit of **1 request per minute**. 
+- **Do NOT** loop through a large list of SKUs in a tight loop; you will receive `Error 429`.
+- **STRATEGY:** For batches of >5 SKUs, implement a throttled background script that sleeps for $\ge 61$ seconds between calls. See `references/rate-limit-handling.md` for the implementation pattern.
 
 ## Auth
 
