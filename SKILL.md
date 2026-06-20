@@ -42,6 +42,14 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/seller_info.py` | POST | `/v1/seller/info` | Компания, рейтинги, подписка |
 | `scripts/seller_logistics_info.py` | POST | `/v1/seller/ozon-logistics/info` | Статус подключения Ozon Доставки, доступные схемы (FBO/FBS) |
 
+### Аналитические отчёты (`references/analytics.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/analytics_stock_on_warehouses.py` | POST | `/v2/analytics/stock_on_warehouses` | Остатки и товары в перемещении по складам. Флаги: `--limit`, `--offset`, `--warehouse-type` |
+| `scripts/analytics_stocks_turnover.py` | POST | `/v1/analytics/turnover/stocks` | Оборачиваемость: среднесуточные продажи, дней остатка. **Лимит: 1 запрос/мин.** Флаги: `--limit`, `--offset`, `--sku` |
+| `scripts/analytics_stocks.py` | POST | `/v1/analytics/stocks` | Детальная аналитика остатков по кластерам. `--sku` обязателен (до 100). `--cluster-id` и `--macrolocal-cluster-id` взаимоисключающие |
+
 ## Rate limits
 
 Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
