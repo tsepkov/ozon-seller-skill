@@ -50,6 +50,15 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/analytics_stocks_turnover.py` | POST | `/v1/analytics/turnover/stocks` | Оборачиваемость: среднесуточные продажи, дней остатка. **Лимит: 1 запрос/мин.** Флаги: `--limit`, `--offset`, `--sku` |
 | `scripts/analytics_stocks.py` | POST | `/v1/analytics/stocks` | Детальная аналитика остатков по кластерам. `--sku` обязателен (до 100). `--cluster-id` и `--macrolocal-cluster-id` взаимоисключающие |
 
+### Финансовые отчёты (`references/finance.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/finance_realization.py` | POST | `/v2/finance/realization` | Отчёт о реализации за месяц. Флаги: `--month`, `--year` |
+| `scripts/finance_realization_posting.py` | POST | `/v1/finance/realization/posting` | Позаказный отчёт о реализации (только до авг. 2023). Флаги: `--month`, `--year` |
+| `scripts/finance_transactions.py` | POST | `/v3/finance/transaction/list` | Список транзакций (макс. 1 месяц). `--from`/`--to` или `--posting-number`. Пагинация: `--page`, `--page-size` |
+| `scripts/finance_transaction_totals.py` | POST | `/v3/finance/transaction/totals` | Итоговые суммы по транзакциям. `--from`/`--to` или `--posting-number` |
+
 ## Rate limits
 
 Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
