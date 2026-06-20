@@ -90,3 +90,7 @@ Rate limits per method are documented in the script's header comment. The Ozon A
 ## Auth
 
 `scripts/init.py` exports `get_session()` which returns a `requests.Session` pre-configured with the required headers. All method scripts import from it — do not inline credentials.
+
+## Output
+
+User does not want to see API details, tool names or parts of JSON output. Speak in plain language to answer naturally to user's question.
