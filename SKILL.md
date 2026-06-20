@@ -1,0 +1,51 @@
+---
+name: ozon-seller-skill
+description: Query Ozon Seller API to help sellers analyze their performance — sales, analytics, stocks, orders, and more.
+---
+
+# ozon-seller-skill
+
+Scripts for querying the Ozon Seller API. Each script in `scripts/` covers one API method and prints JSON to stdout.
+
+## Required environment variables
+
+| Variable | Description |
+|---|---|
+| `OZON_API_KEY` | API key from Ozon Seller personal account (Settings → API keys) |
+| `OZON_CLIENT_ID` | Numeric client ID shown next to the API key |
+
+Both must be present or any script will exit with an error.
+
+## Setup
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env   # fill in OZON_API_KEY and OZON_CLIENT_ID
+```
+
+## Running a script
+
+Each script is a standalone CLI tool. Pass arguments as flags; run with `--help` for details.
+
+```bash
+python scripts/<method>.py [options]
+```
+
+Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
+
+## Scripts
+
+### Информация о кабинете продавца (`references/about.me.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/seller_info.py` | POST | `/v1/seller/info` | Компания, рейтинги, подписка |
+| `scripts/seller_logistics_info.py` | POST | `/v1/seller/ozon-logistics/info` | Статус подключения Ozon Доставки, доступные схемы (FBO/FBS) |
+
+## Rate limits
+
+Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
+
+## Auth
+
+`scripts/init.py` exports `get_session()` which returns a `requests.Session` pre-configured with the required headers. All method scripts import from it — do not inline credentials.
