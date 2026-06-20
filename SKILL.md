@@ -59,6 +59,16 @@ Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
 | `scripts/finance_transactions.py` | POST | `/v3/finance/transaction/list` | Список транзакций (макс. 1 месяц). `--from`/`--to` или `--posting-number`. Пагинация: `--page`, `--page-size` |
 | `scripts/finance_transaction_totals.py` | POST | `/v3/finance/transaction/totals` | Итоговые суммы по транзакциям. `--from`/`--to` или `--posting-number` |
 
+### Товары (`references/products.md`)
+
+| Script | Method | Endpoint | Description |
+|---|---|---|---|
+| `scripts/product_list.py` | POST | `/v3/product/list` | Список товаров с cursor-пагинацией. Фильтр: `--visibility`, `--offer-id`, `--product-id` |
+| `scripts/product_info.py` | POST | `/v3/product/info/list` | Детальная информация: комиссии, статус, видимость, ошибки. `--offer-id` / `--sku` / `--product-id` (один тип, до 1000) |
+| `scripts/product_content_rating.py` | POST | `/v1/product/rating-by-sku` | Контент-рейтинг карточки (0–100) с разбивкой по группам. `--sku` обязателен |
+| `scripts/product_prices.py` | POST | `/v5/product/info/prices` | Цены, % комиссии FBO/FBS, прайс-индекс (GREEN/YELLOW/RED). Cursor-пагинация |
+| `scripts/product_quota.py` | POST | `/v4/product/info/limit` | Лимиты ассортимента: общий лимит SKU, суточные квоты на создание/обновление |
+
 ## Rate limits
 
 Rate limits per method are documented in the script's header comment. The Ozon API enforces limits per `Client-Id`; scripts do not add extra throttling unless noted.
