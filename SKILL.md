@@ -1,26 +1,27 @@
 ---
 name: ozon-seller-skill
 description: Query Ozon Seller API to help sellers analyze their performance — sales, analytics, stocks, orders, and more.
+required_environment_variables:
+  - name: OZON_API_KEY
+    prompt: "Ozon Seller API key"
+    help: "Get from Seller personal account → Settings → API keys"
+    required_for: "All API requests"
+  - name: OZON_CLIENT_ID
+    prompt: "Ozon Seller Client ID (numeric)"
+    help: "Numeric ID shown next to the API key in Seller account settings"
+    required_for: "All API requests"
 ---
 
 # ozon-seller-skill
 
 Scripts for querying the Ozon Seller API. Each script in `scripts/` covers one API method and prints JSON to stdout.
 
-## Required environment variables
-
-| Variable | Description |
-|---|---|
-| `OZON_API_KEY` | API key from Ozon Seller personal account (Settings → API keys) |
-| `OZON_CLIENT_ID` | Numeric client ID shown next to the API key |
-
-Both must be present or any script will exit with an error.
+`OZON_API_KEY` and `OZON_CLIENT_ID` are declared in the skill frontmatter and passed through automatically to all script invocations.
 
 ## Setup
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # fill in OZON_API_KEY and OZON_CLIENT_ID
 ```
 
 ## Running a script
@@ -28,7 +29,7 @@ cp .env.example .env   # fill in OZON_API_KEY and OZON_CLIENT_ID
 Each script is a standalone CLI tool. Pass arguments as flags; run with `--help` for details.
 
 ```bash
-python scripts/<method>.py [options]
+python ${HERMES_SKILL_DIR}/scripts/<method>.py [options]
 ```
 
 Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
