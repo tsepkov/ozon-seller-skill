@@ -3,3 +3,4 @@
 __pycache__/
 *.pyc
 references/about.me.md
+.idea/
