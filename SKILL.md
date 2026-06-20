@@ -1,6 +1,11 @@
 ---
 name: ozon-seller-skill
-description: Query Ozon Seller API to help sellers analyze their performance — sales, analytics, stocks, orders, and more.
+description: "Ozon Seller API — shop analytics across financials, inventory, products, prices, seller ratings, and customer reviews."
+version: 1.0.0
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [Ecommerce, Ozon, Analytics, Finance, Inventory, Products, Reviews, Ratings, Russia]
 required_environment_variables:
   - name: OZON_API_KEY
     prompt: "Ozon Seller API key"
