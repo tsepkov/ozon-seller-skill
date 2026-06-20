@@ -21,20 +21,12 @@ required_environment_variables:
 
 Scripts for querying the Ozon Seller API. Each script in `scripts/` covers one API method and prints JSON to stdout.
 
-`OZON_API_KEY` and `OZON_CLIENT_ID` are declared in the skill frontmatter and passed through automatically to all script invocations.
-
-## Setup
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Running a script
 
 Each script is a standalone CLI tool. Pass arguments as flags; run with `--help` for details.
 
 ```bash
-~/.venv/bin/python ${HERMES_SKILL_DIR}/scripts/<method>.py [options]
+python ${HERMES_SKILL_DIR}/scripts/<method>.py [options]
 ```
 
 Output is always JSON on stdout. Errors go to stderr with a non-zero exit code.
