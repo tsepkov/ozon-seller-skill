@@ -1,6 +1,6 @@
 ---
 name: ozon-seller-skill
-description: "Ozon Seller API — shop analytics across financials, inventory, products, prices, seller ratings, and customer reviews."
+description: "Ozon Seller API — shop analytics across financials, inventory, products, prices, seller ratings, and customer reviews. Stock management, including SKUs, warehouses, and turnover. Financial reports on sales, transactions, and realizations. Product details with commissions, visibility, and content ratings. Seller performance metrics and review management. Essential for Ozon marketplace sellers seeking data-driven insights and operational efficiency."
 version: 1.0.0
 platforms: [linux, macos]
 metadata:
